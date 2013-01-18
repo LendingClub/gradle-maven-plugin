@@ -1,0 +1,3 @@
+# gradle-maven-plugin
+
+A plugin to allow gradle to be invoked from maven.
