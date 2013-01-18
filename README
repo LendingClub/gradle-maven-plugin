@@ -1,3 +1,11 @@
 # gradle-maven-plugin
 
 A plugin to allow gradle to be invoked from maven.
+
+
+
+# Plugin Testing
+
+Here is some information on maven plugin testing
+
+http://maven.apache.org/plugin-developers/plugin-testing.html
