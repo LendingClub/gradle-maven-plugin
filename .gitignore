@@ -4,3 +4,4 @@ target
 .project
 .gradle/
 build/
+output.txt
