@@ -54,6 +54,8 @@
    
   </dependencies>
 
+
+<!--
 <repositories>
 <repository>
 <snapshots>
@@ -64,13 +66,13 @@
 <url>http://dl.bintray.com/content/robschoening/gradle-maven-plugin</url>
 </repository>
 </repositories>
-
+-->
 <pluginRepositories>
 <pluginRepository>
 <snapshots>
 <enabled>false</enabled>
 </snapshots>
-<id>central</id>
+<id>gradle-maven-plugin-repo</id>
 <name>bintray-plugins</name>
 <url>http://dl.bintray.com/content/robschoening/gradle-maven-plugin</url>
 </pluginRepository>
