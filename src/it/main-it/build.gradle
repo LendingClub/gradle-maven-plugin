@@ -9,6 +9,6 @@ clean.doLast {
 	}
 }
 task writeFile << {
-	File f = new File(rootDir,"/output.txt");
+	File f = new File(rootDir,"build/output.txt");
 	f.setText("hello");
 }
