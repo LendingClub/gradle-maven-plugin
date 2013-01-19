@@ -4,9 +4,9 @@
   <groupId>org.fortasoft.test</groupId>
   <artifactId>gradle-maven-plugin-test</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0.0-</version>
   <name>gradle-maven-plugin Maven Mojo</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/if6was9/gradle-maven-plugin</url>
 <build>
 <plugins>
 	<plugin>
@@ -20,7 +20,7 @@
 	<plugin>
 	       <groupId>org.fortasoft</groupId>
 	      <artifactId>gradle-maven-plugin</artifactId>
-	      <version>1.0</version>
+	      <version>1.0.0</version>
 	        <configuration>
 	        	<tasks>
 					<task>clean</task>
