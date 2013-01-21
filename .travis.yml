@@ -1,5 +1,5 @@
 language: java
-script: mvn -q clean integration-test
+script: mvn integration-test
 jdk:
   - oraclejdk6
   - oraclejdk7
