@@ -1,6 +1,6 @@
 # gradle-maven-plugin
 
-[![Build Status](https://travis-ci.org/if6was9/gradle-maven-plugin.png)](https://travis-ci.org/if6was9/gradle-maven-plugin)
+[![Build Status](https://secure.travis-ci.org/if6was9/gradle-maven-plugin.png?branch=master)](http://travis-ci.org/if6was9/gradle-maven-plugin)
 
 
 This is a maven plugin that makes it easy to invoke gradle from maven.  
