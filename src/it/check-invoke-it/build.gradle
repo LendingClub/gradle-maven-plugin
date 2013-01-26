@@ -1,0 +1,8 @@
+apply plugin: 'maven'
+apply plugin: 'java'
+
+
+
+task doIt << {
+	throw new GradleException("forced failure")
+}
