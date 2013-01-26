@@ -28,6 +28,9 @@ import org.gradle.tooling.ResultHandler;
 import org.slf4j.impl.MavenLogWrapper;
 import org.slf4j.impl.NewMojoLogger;
 
+import groovy.lang.Binding;
+import groovy.lang.GroovyShell;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,13 +42,7 @@ import java.io.IOException;
  * 
  */
 public class GradleMojo extends AbstractMojo {
-	/**
-	 * Location of the file.
-	 * 
-	 * @parameter expression="${project.build.directory}"
-	 * @required
-	 */
-	private File outputDirectory;
+
 
 	/**
 	 * @parameter expression="1.3"
@@ -69,6 +66,10 @@ public class GradleMojo extends AbstractMojo {
 	 */
 	private File gradleProjectDirectory;
 
+	/** @parameter
+	 * 
+	 */
+	private String checkInvokeScript;
 	
 	/**
 	 * 
@@ -87,6 +88,14 @@ public class GradleMojo extends AbstractMojo {
 	 * @parameter 
 	 */
 	private File javaHome;
+	
+	
+	/**
+	 * 
+	 * @parameter expression="${project.basedir}"
+	 * @required
+	 */
+	private File mavenBaseDir;
 	
 	File getGradleProjectDirectory() {
 		return gradleProjectDirectory;
@@ -148,11 +157,38 @@ public class GradleMojo extends AbstractMojo {
 		}
 	}
 
+	protected boolean shouldExecute() throws MojoFailureException{
+		boolean shouldExecute = true;
+		if (checkInvokeScript!=null && checkInvokeScript.trim().length()>0) {
+			Binding b = new Binding();
+			
+			b.setVariable("mavenBaseDir", mavenBaseDir);
+			GroovyShell gs = new GroovyShell(b);
+			
+			Object rval = gs.evaluate(checkInvokeScript);
+			
+			if (rval!=null && rval instanceof Boolean) {
+				Boolean boolRval = (Boolean) rval;
+				shouldExecute = boolRval.booleanValue();
+			}
+			else {
+				throw new MojoFailureException("checkScript must return boolean");
+			}
+		}
+		
+		return shouldExecute;
+	}
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
 		ProjectConnection connection = null;
 		try {
 			NewMojoLogger.attachMojo(this);
+			
+			if (!shouldExecute()) {
+				return;
+			}
+	
+			
 			GradleConnector c = GradleConnector.newConnector();
 			getLog().info("jvmArgs: "+args);
 			getLog().info("gradleProjectDirectory: "+getGradleProjectDirectory().getAbsolutePath());
