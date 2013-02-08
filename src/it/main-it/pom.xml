@@ -4,7 +4,7 @@
   <groupId>org.fortasoft.test</groupId>
   <artifactId>gradle-maven-plugin-test</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
   <name>gradle-maven-plugin Maven Mojo</name>
   <url>http://maven.apache.org</url>
 <build>
@@ -20,7 +20,7 @@
 	<plugin>
 	       <groupId>org.fortasoft</groupId>
 	      <artifactId>gradle-maven-plugin</artifactId>
-	      <version>1.0.1-SNAPSHOT</version>
+	      <version>1.0.1</version>
 	        <configuration>
 	        	<tasks>
 					<task>clean</task>
@@ -53,5 +53,14 @@
 
    
   </dependencies>
-
+<pluginRepositories>
+    <pluginRepository>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+        <id>gradle-maven-plugin-release</id>
+        <name>gradle-maven-plugin-release</name>
+        <url>http://dl.bintray.com/content/robschoening/gradle-maven-plugin</url>
+    </pluginRepository>
+</pluginRepositories>
 </project>
