@@ -30,7 +30,7 @@ Now declare the plugin and bind it to the lifecycle phase:
 <plugin>
       <groupId>org.fortasoft</groupId>
       <artifactId>gradle-maven-plugin</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
         <configuration>
         	<tasks>
 			<!-- this would effectively call "gradle doSomething" -->
