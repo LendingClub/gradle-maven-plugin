@@ -45,7 +45,7 @@ public class GradleMojo extends AbstractMojo {
 
 
 	/**
-	 * @parameter expression="1.3"
+	 * @parameter expression="1.5"
 	 * @required
 	 */
 	private String gradleVersion;
