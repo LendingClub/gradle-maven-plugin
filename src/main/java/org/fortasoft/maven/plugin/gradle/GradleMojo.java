@@ -14,7 +14,6 @@
 
 package org.fortasoft.maven.plugin.gradle;
 
-
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -34,6 +33,8 @@ import groovy.lang.GroovyShell;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * Goal which invokes gradle!
@@ -43,53 +44,50 @@ import java.io.IOException;
  */
 public class GradleMojo extends AbstractMojo {
 
-
 	/**
-	 * @parameter expression="1.5"
+	 * @parameter expression="1.6"
 	 * @required
 	 */
 	private String gradleVersion;
 
 	/**
-	 * @parameter  expression="${tasks}"
+	 * @parameter expression="${tasks}"
 	 */
 	private String[] tasks;
 
 	/**
-	 * @parameter  expression="${task}"
+	 * @parameter expression="${task}"
 	 */
 	private String task;
-	
-	
+
 	/**
-	 * @parameter  expression="${project.basedir}"
+	 * @parameter expression="${project.basedir}"
 	 */
 	private File gradleProjectDirectory;
 
-	/** @parameter
+	/**
+	 * @parameter
 	 * 
 	 */
 	private String checkInvokeScript;
-	
+
 	/**
 	 * 
 	 * @parameter
 	 */
-	private String [] args;
-	
+	private String[] args;
+
 	/**
 	 * 
 	 * @parameter
 	 */
-	private String [] jvmArgs;
-	
-	
+	private String[] jvmArgs;
+
 	/**
-	 * @parameter 
+	 * @parameter
 	 */
 	private File javaHome;
-	
-	
+
 	/**
 	 * 
 	 * @parameter expression="${project.basedir}"
@@ -97,9 +95,34 @@ public class GradleMojo extends AbstractMojo {
 	 */
 	private File mavenBaseDir;
 	
+	
+	/**
+	 * @parameter
+	 */
+	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useDistribution(java.net.URI)
+
+	private String gradleDistribution;
+
+	/**
+	 * @parameter
+	 */
+	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useGradleUserHomeDir(java.io.File)
+	private File gradleUserHomeDir;
+
+	/**
+	 * @parameter
+	 */
+	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useInstallation(java.io.File)
+
+	private File gradleInstallationDir;
+	
+
 	File getGradleProjectDirectory() {
 		return gradleProjectDirectory;
 	}
+
+	
+
 	String[] getTasks() throws MojoFailureException {
 
 		String[] theTasks;
@@ -157,60 +180,79 @@ public class GradleMojo extends AbstractMojo {
 		}
 	}
 
-	protected boolean shouldExecute() throws MojoFailureException{
+	protected boolean shouldExecute() throws MojoFailureException {
 		boolean shouldExecute = true;
-		if (checkInvokeScript!=null && checkInvokeScript.trim().length()>0) {
+		if (checkInvokeScript != null && checkInvokeScript.trim().length() > 0) {
 			Binding b = new Binding();
-			
+
 			b.setVariable("mavenBaseDir", mavenBaseDir);
 			GroovyShell gs = new GroovyShell(b);
-			
+
 			Object rval = gs.evaluate(checkInvokeScript);
-			
-			if (rval!=null && rval instanceof Boolean) {
+
+			if (rval != null && rval instanceof Boolean) {
 				Boolean boolRval = (Boolean) rval;
 				shouldExecute = boolRval.booleanValue();
-			}
-			else {
-				throw new MojoFailureException("checkScript must return boolean");
+			} else {
+				throw new MojoFailureException(
+						"checkScript must return boolean");
 			}
 		}
-		
+
 		return shouldExecute;
 	}
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
 
 		ProjectConnection connection = null;
 		try {
 			NewMojoLogger.attachMojo(this);
-			
+
 			if (!shouldExecute()) {
 				return;
 			}
-	
-			
+
 			GradleConnector c = GradleConnector.newConnector();
-			getLog().info("jvmArgs: "+args);
-			getLog().info("gradleProjectDirectory: "+getGradleProjectDirectory().getAbsolutePath());
+			getLog().info("jvmArgs: " + args);
+			getLog().info(
+					"gradleProjectDirectory: "
+							+ getGradleProjectDirectory().getAbsolutePath());
 			c = c.useGradleVersion(gradleVersion).forProjectDirectory(
 					getGradleProjectDirectory());
 
-		
-			
+			if (gradleInstallationDir != null) {
+				getLog().info(
+						"gradleInstallation: "
+								+ gradleInstallationDir.getAbsolutePath());
+				c = c.useInstallation(gradleInstallationDir);
+			}
+
+			if (gradleUserHomeDir != null) {
+				getLog().info(
+						"gradleInstallation: "
+								+ gradleUserHomeDir.getAbsolutePath());
+				c = c.useInstallation(gradleUserHomeDir);
+			}
+			if (gradleDistribution != null) {
+				getLog().info("gradleDistributionUri: " + gradleDistribution);
+				c = c.useDistribution(new URI(gradleDistribution));
+			}
+
 			connection = c.connect();
 
 			BuildLauncher launcher = connection.newBuild();
 			launcher.forTasks(getTasks());
 
-			if (jvmArgs!=null && jvmArgs.length>0) {
+			if (jvmArgs != null && jvmArgs.length > 0) {
 				launcher.setJvmArguments(jvmArgs);
 			}
-			if (args!=null && args.length>0) {
+			if (args != null && args.length > 0) {
 				launcher.withArguments(args);
 			}
-			if (javaHome!=null) {
+			if (javaHome != null) {
 				launcher.setJavaHome(javaHome);
 			}
+
 			launcher.addProgressListener(new MyProgressListener());
 
 			// launcher will not block
@@ -220,9 +262,12 @@ public class GradleMojo extends AbstractMojo {
 
 			if (gradleConnectionException != null) {
 				throw new MojoFailureException(gradleConnectionException,
-						gradleConnectionException.toString(), gradleConnectionException.toString());
+						gradleConnectionException.toString(),
+						gradleConnectionException.toString());
 			}
-
+		}
+		catch (URISyntaxException e) {
+			throw new MojoFailureException("gradleDistribution is not in URI syntax");
 		} finally {
 			if (connection != null) {
 				connection.close();
