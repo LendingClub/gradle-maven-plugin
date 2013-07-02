@@ -229,9 +229,9 @@ public class GradleMojo extends AbstractMojo {
 
 			if (gradleUserHomeDir != null) {
 				getLog().info(
-						"gradleInstallation: "
+						"gradleUserHome: "
 								+ gradleUserHomeDir.getAbsolutePath());
-				c = c.useInstallation(gradleUserHomeDir);
+				c = c.useGradleUserHomeDir(gradleUserHomeDir);
 			}
 			if (gradleDistribution != null) {
 				getLog().info("gradleDistributionUri: " + gradleDistribution);
