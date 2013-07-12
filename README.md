@@ -62,7 +62,7 @@ These options can be given in the &lt;configuration&gt; element:
 
 <tr><td>task</td><td>yes (or tasks) </td><td>gradle task to be invoked</td><td><pre>&lt;task&gt;myTask&lt;/task&gt;</pre> </td></tr>
 <tr><td>tasks</td><td>yes (or task) </td><td>gradle tasks to be invoked</td><td><pre>&lt;tasks&gt;<br> &lt;task&gt;task1&lt;/task&gt;<br/> &lt;task&gt;task2&lt;/task&gt; <br/>&lt;/tasks&gt;</pre></td></tr>
-<tr><td>gradleVersion</td><td>no</td><td>version of gradle to use (e.g. 1.7)</td><td><pre>&lt;gradleProjectDirectory&gt;<br /> ${project.basedir}/another/path<br/> &lt;/gradleProjectDirectory&gt;</pre></td></tr>
+<tr><td>gradleVersion</td><td>no</td><td>version of gradle to use</td><td><pre>&lt;gradleVersion&gt;1.7&lt;/gradleVersion&gt;</pre></td></tr>
 <tr><td>gradleProjectDirectory</td><td>no</td><td>path to the location of your build.gradle</td><td><pre>&lt;gradleProjectDirectory&gt;<br /> ${project.basedir}/another/path<br/> &lt;/gradleProjectDirectory&gt;</pre></td></tr>
 <tr><td>javaHome</td><td>no</td><td>give and explicit path to a JAVA_HOME</td><td><pre>&lt;javaHome&gt; /my/path/to/jdk &lt;/javaHome&gt;</td></pre></tr>
 <tr><td>args</td><td>no</td><td>pass argument to gradle</td><td><pre>&lt;args&gt;<br> &lt;arg&gt;-q&lt;/arg&gt; <br/>&lt;/args&gt;</td></pre></tr>
