@@ -4,9 +4,29 @@
 	<groupId>org.fortasoft</groupId>
 	<artifactId>gradle-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>gradle-maven-plugin Maven Mojo</name>
 	<url>https://github.com/if6was9/gradle-maven-plugin</url>
+	<licenses>
+	    <license>
+	      <name>The Apache Software License, Version 2.0</name>
+	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	      <distribution>repo</distribution>
+	    </license>
+	  </licenses>
+	  <scm>
+	    <connection>scm:git:git@github.com:if6was9/gradle-maven-plugin.git</connection>
+	    <developerConnection>scm:git:git@github.com:if6was9/gradle-maven-plugin.git</developerConnection>
+	    <url>git@github.com:if6was9/gradle-maven-plugin.git</url>
+	  </scm>
+
+	<developers>
+	    <developer>
+	      <id>rob</id>
+	      <name>Rob Schoening</name>
+	      <email>robschoening@gmail.com</email>
+	    </developer>
+	  </developers>
 	<build>
 		<plugins>
 			<plugin>
