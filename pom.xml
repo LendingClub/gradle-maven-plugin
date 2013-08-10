@@ -4,9 +4,14 @@
 	<groupId>org.fortasoft</groupId>
 	<artifactId>gradle-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.4</version>
 	<name>gradle-maven-plugin Maven Mojo</name>
 	<url>https://github.com/if6was9/gradle-maven-plugin</url>
+	<parent>
+	    <groupId>org.sonatype.oss</groupId>
+	    <artifactId>oss-parent</artifactId>
+	    <version>7</version>
+	  </parent>
 	<licenses>
 	    <license>
 	      <name>The Apache Software License, Version 2.0</name>
@@ -98,11 +103,5 @@
 			<url>http://repo.gradle.org/gradle/libs-releases-local/</url>
 		</repository>
 	</repositories>
-	<distributionManagement>
-		<repository>
-			<id>bintray-robschoening-gradle-maven-plugin-gradle-maven-plugin</id>
-			<name>robschoening-gradle-maven-plugin-gradle-maven-plugin</name>
-			<url>https://api.bintray.com/maven/robschoening/gradle-maven-plugin/gradle-maven-plugin</url>
-		</repository>
-	</distributionManagement>
+
 </project>
