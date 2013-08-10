@@ -8,30 +8,29 @@
 	<name>gradle-maven-plugin Maven Mojo</name>
 	<url>https://github.com/if6was9/gradle-maven-plugin</url>
 	<parent>
-	    <groupId>org.sonatype.oss</groupId>
-	    <artifactId>oss-parent</artifactId>
-	    <version>7</version>
-	  </parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<licenses>
-	    <license>
-	      <name>The Apache Software License, Version 2.0</name>
-	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-	      <distribution>repo</distribution>
-	    </license>
-	  </licenses>
-	  <scm>
-	    <connection>scm:git:git@github.com:if6was9/gradle-maven-plugin.git</connection>
-	    <developerConnection>scm:git:git@github.com:if6was9/gradle-maven-plugin.git</developerConnection>
-	    <url>git@github.com:if6was9/gradle-maven-plugin.git</url>
-	  </scm>
-
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:git:git@github.com:if6was9/gradle-maven-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:if6was9/gradle-maven-plugin.git</developerConnection>
+		<url>git@github.com:if6was9/gradle-maven-plugin.git</url>
+	</scm>
 	<developers>
-	    <developer>
-	      <id>rob</id>
-	      <name>Rob Schoening</name>
-	      <email>robschoening@gmail.com</email>
-	    </developer>
-	  </developers>
+		<developer>
+			<id>rob</id>
+			<name>Rob Schoening</name>
+			<email>robschoening@gmail.com</email>
+		</developer>
+	</developers>
 	<build>
 		<plugins>
 			<plugin>
@@ -77,18 +76,18 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.6</version>
+			<version>1.7.5</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.gradle</groupId>
 			<artifactId>gradle-tooling-api</artifactId>
-			<version>1.6</version>
+			<version>1.7</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -103,5 +102,4 @@
 			<url>http://repo.gradle.org/gradle/libs-releases-local/</url>
 		</repository>
 	</repositories>
-
 </project>

@@ -4,7 +4,7 @@
   <groupId>org.fortasoft.test</groupId>
   <artifactId>check-invoke-it</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.5</version>
+  <version>1.0.6-SNAPSHOT</version>
   <name>gradle-maven-plugin Maven Mojo</name>
   <url>http://maven.apache.org</url>
 <build>
@@ -20,7 +20,7 @@
 	<plugin>
 	       <groupId>org.fortasoft</groupId>
 	      <artifactId>gradle-maven-plugin</artifactId>
-	      <version>1.0.2</version>
+	      <version>1.0.6-SNAPSHOT</version>
 	        <configuration>
 	        	<tasks>
 					<task>doIt</task>
