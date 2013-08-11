@@ -9,20 +9,7 @@ It is similar to the maven-antrun-plugin that allows ant to be invoked from mave
 
 # Usage
 
-Add the following plugin repository declaration to your maven pom:
-
-```
-<pluginRepositories>
-	<pluginRepository>
-		<snapshots>
-			<enabled>false</enabled>
-		</snapshots>
-		<id>gradle-maven-plugin-release</id>
-		<name>gradle-maven-plugin-release</name>
-		<url>http://dl.bintray.com/content/robschoening/gradle-maven-plugin</url>
-	</pluginRepository>
-</pluginRepositories>
-```
+The gradle-maven-plugin is now in Maven Central, so there is no need to declare a custom repository.
 
 Now declare the plugin and bind it to the lifecycle phase:
 
@@ -30,7 +17,7 @@ Now declare the plugin and bind it to the lifecycle phase:
 <plugin>
       <groupId>org.fortasoft</groupId>
       <artifactId>gradle-maven-plugin</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.5</version>
         <configuration>
         	<tasks>
 			<!-- this would effectively call "gradle doSomething" -->
