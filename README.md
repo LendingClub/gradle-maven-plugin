@@ -26,10 +26,10 @@ Now declare the plugin and bind it to the lifecycle phase:
        </configuration>
         <executions>
           <execution>
-	<!-- You can bind this to any phase you like -->
+	    <!-- You can bind this to any phase you like -->
             <phase>compile</phase>
             <goals>
-		<!-- goal must be "invoke" -->
+	       <!-- goal must be "invoke" -->
                <goal>invoke</goal>
             </goals>
           </execution>
