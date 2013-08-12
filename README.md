@@ -3,9 +3,15 @@
 [![Build Status](https://secure.travis-ci.org/if6was9/gradle-maven-plugin.png?branch=master)](http://travis-ci.org/if6was9/gradle-maven-plugin)
 
 
-This is a maven plugin that makes it easy to invoke gradle from maven.  
+This is a maven plugin that makes it easy to invoke Gradle tasks from within Maven.  
 
-It is similar to the maven-antrun-plugin that allows ant to be invoked from maven. 
+
+# Objective
+
+Gradle is an awesome general-purpose tool.  If your project/organization is committed to maven, switching to gradle may not 
+be a practical option.  The plugin is conceptually similar to the maven-antrun-plugin, which allows ant to be invoked from maven.
+
+Now instead of using Ant to perform ad-hoc tasks from within Maven, you can use Groovy/Gradle instead!
 
 # Usage
 
