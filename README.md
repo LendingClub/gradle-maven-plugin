@@ -11,7 +11,7 @@ It is similar to the maven-antrun-plugin that allows ant to be invoked from mave
 
 The gradle-maven-plugin is now in Maven Central, so there is no need to declare a custom repository.
 
-Now declare the plugin and bind it to the lifecycle phase:
+To use the plugin, simply declare the plugin and bind it to the maven lifecycle phase of your choice:
 
 ```
 <plugin>
@@ -37,9 +37,12 @@ Now declare the plugin and bind it to the lifecycle phase:
       </plugin>
 ```
 
-Now when you run maven, gradle will be invoked and execute the "doSomething" task!  Obviously you can change the task(s)
-to suit your needs.
-In this example, this will happen during the maven "compile" phase, but this can be easily changed.
+Now when you run maven, gradle will be invoked and execute the "doSomething" task defined in build.gradle.
+
+Obviously you can change the task(s) to suit your needs.
+
+In this example, the gradle invocation will happen during the maven "compile" phase, but this can be easily changed by changing
+the &lt;phase&gt; element value.
 
 ## Options
 These options can be given in the &lt;configuration&gt; element:
