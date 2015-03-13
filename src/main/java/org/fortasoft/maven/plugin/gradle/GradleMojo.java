@@ -243,6 +243,12 @@ public class GradleMojo extends AbstractMojo {
 			BuildLauncher launcher = connection.newBuild();
 			launcher.forTasks(getTasks());
 
+			// Make sure to setStandardOut & Error otherwise
+			// basic gradle build output will be lost
+			// making troubleshooting hard
+            launcher.setStandardOutput(System.out);
+            launcher.setStandardError(System.err);
+
 			if (jvmArgs != null && jvmArgs.length > 0) {
 				launcher.setJvmArguments(jvmArgs);
 			}
