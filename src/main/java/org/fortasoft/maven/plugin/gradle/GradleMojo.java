@@ -45,23 +45,23 @@ import java.net.URISyntaxException;
 public class GradleMojo extends AbstractMojo {
 
 	/**
-	 * @parameter expression="1.7"
+	 * @parameter property="gradleVersion" default-value="1.7"
 	 * @required
 	 */
 	private String gradleVersion;
 
 	/**
-	 * @parameter expression="${tasks}"
+	 * @parameter property="tasks"
 	 */
 	private String[] tasks;
 
 	/**
-	 * @parameter expression="${task}"
+	 * @parameter property="task"
 	 */
 	private String task;
 
 	/**
-	 * @parameter expression="${project.basedir}"
+	 * @parameter property="gradleProjectDirectory" default-value="${project.basedir}"
 	 */
 	private File gradleProjectDirectory;
 
@@ -90,7 +90,7 @@ public class GradleMojo extends AbstractMojo {
 
 	/**
 	 * 
-	 * @parameter expression="${project.basedir}"
+	 * @parameter property="mavenBaseDir" default-value="${project.basedir}"
 	 * @required
 	 */
 	private File mavenBaseDir;
