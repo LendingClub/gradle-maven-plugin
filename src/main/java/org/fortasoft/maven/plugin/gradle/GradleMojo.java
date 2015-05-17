@@ -45,7 +45,7 @@ import java.net.URISyntaxException;
 public class GradleMojo extends AbstractMojo {
 
 	/**
-	 * @parameter expression="1.7"
+	 * @parameter expression="2.4"
 	 * @required
 	 */
 	private String gradleVersion;
