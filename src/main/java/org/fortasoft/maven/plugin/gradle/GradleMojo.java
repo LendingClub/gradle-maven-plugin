@@ -73,7 +73,6 @@ public class GradleMojo extends AbstractMojo {
 	@Parameter
 	private File javaHome;
 
-
 	@Parameter(defaultValue="${project.basedir}",
 		required=true)
 	private File mavenBaseDir;
