@@ -46,7 +46,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 @Mojo(name="invoke")
 public class GradleMojo extends AbstractMojo {
 
-	@Parameter(defaultValue="1.7", required=true)
+	@Parameter(defaultValue="2.4", required=true)
 	private String gradleVersion;
 
 
