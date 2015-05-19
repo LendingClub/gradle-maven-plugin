@@ -36,84 +36,59 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.Mojo;
+
 /**
  * Goal which invokes gradle!
  * 
- * @goal invoke
- * 
  */
+@Mojo(name="invoke")
 public class GradleMojo extends AbstractMojo {
 
-	/**
-	 * @parameter expression="1.7"
-	 * @required
-	 */
+	@Parameter(defaultValue="1.7", required=true)
 	private String gradleVersion;
 
-	/**
-	 * @parameter expression="${tasks}"
-	 */
+
+	@Parameter(defaultValue="${tasks}")
 	private String[] tasks;
 
-	/**
-	 * @parameter expression="${task}"
-	 */
+
+	@Parameter(defaultValue="${task}")
 	private String task;
 
-	/**
-	 * @parameter expression="${project.basedir}"
-	 */
+
+	@Parameter(defaultValue="${project.basedir}")
 	private File gradleProjectDirectory;
 
-	/**
-	 * @parameter
-	 * 
-	 */
+	@Parameter
 	private String checkInvokeScript;
 
-	/**
-	 * 
-	 * @parameter
-	 */
+	@Parameter
 	private String[] args;
 
-	/**
-	 * 
-	 * @parameter
-	 */
+	@Parameter
 	private String[] jvmArgs;
 
-	/**
-	 * @parameter
-	 */
+	@Parameter
 	private File javaHome;
 
-	/**
-	 * 
-	 * @parameter expression="${project.basedir}"
-	 * @required
-	 */
+
+	@Parameter(defaultValue="${project.basedir}",
+		required=true)
 	private File mavenBaseDir;
 	
 	
-	/**
-	 * @parameter
-	 */
 	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useDistribution(java.net.URI)
-
+	@Parameter
 	private String gradleDistribution;
 
-	/**
-	 * @parameter
-	 */
 	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useGradleUserHomeDir(java.io.File)
+	@Parameter
 	private File gradleUserHomeDir;
 
-	/**
-	 * @parameter
-	 */
 	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useInstallation(java.io.File)
-
+	@Parameter
 	private File gradleInstallationDir;
 	
 
@@ -242,6 +217,12 @@ public class GradleMojo extends AbstractMojo {
 
 			BuildLauncher launcher = connection.newBuild();
 			launcher.forTasks(getTasks());
+
+			// Make sure to setStandardOut & Error otherwise
+			// basic gradle build output will be lost
+			// making troubleshooting hard
+            launcher.setStandardOutput(System.out);
+            launcher.setStandardError(System.err);
 
 			if (jvmArgs != null && jvmArgs.length > 0) {
 				launcher.setJvmArguments(jvmArgs);
