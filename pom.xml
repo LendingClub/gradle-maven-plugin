@@ -33,6 +33,23 @@
 	</developers>
 	<build>
 		<plugins>
+		  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+        	<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+        </configuration>
+        <executions>
+        	<execution>
+        		<id>mojo-descriptor</id>
+        		<goals>
+        			<goal>descriptor</goal>
+        		</goals>
+        		<phase>process-classes</phase>
+        	</execution>
+        </executions>
+      </plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
