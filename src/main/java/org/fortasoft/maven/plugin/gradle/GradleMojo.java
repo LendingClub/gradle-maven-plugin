@@ -35,9 +35,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.Mojo;
+
+import org.apache.maven.execution.MavenSession;
 
 /**
  * Goal which invokes gradle!
@@ -90,7 +95,9 @@ public class GradleMojo extends AbstractMojo {
 	@Parameter
 	private File gradleInstallationDir;
 	
-
+	@Parameter( defaultValue = "${session}", readonly = true )
+    private MavenSession session;
+	
 	File getGradleProjectDirectory() {
 		return gradleProjectDirectory;
 	}
@@ -226,8 +233,11 @@ public class GradleMojo extends AbstractMojo {
 			if (jvmArgs != null && jvmArgs.length > 0) {
 				launcher.setJvmArguments(jvmArgs);
 			}
-			if (args != null && args.length > 0) {
-				launcher.withArguments(args);
+
+			String[] finalArgs = buildFinalArgs(args);
+
+			if (finalArgs != null && finalArgs.length > 0) {
+				launcher.withArguments(finalArgs);
 			}
 			if (javaHome != null) {
 				launcher.setJavaHome(javaHome);
@@ -254,6 +264,34 @@ public class GradleMojo extends AbstractMojo {
 			}
 			NewMojoLogger.detachMojo();
 		}
+	}
+
+	/*
+	 * Right now this is only conditionally adding
+	 * gradle offline option to command line, but 
+	 * there is additional functionality we can do
+	 * in the future.
+	 */
+	private String[] buildFinalArgs(String[] args) {
+
+		List<String> argList = new ArrayList<String>();
+
+		if (args != null) {
+			for (int i=0; i < args.length; i++) {
+				argList.add(args[i]);
+			}
+		}
+
+		boolean offline = session.getSettings().isOffline();
+
+		// If we're offline in maven, let's be offline
+		// in gradle as well.
+		if (offline && !GradleArgs.OFFLINE.exists(argList)) {
+			argList.add(GradleArgs.OFFLINE.getLongValue());
+		}
+
+		// convert back to array
+		return argList.toArray(new String[argList.size()]);
 	}
 
 	synchronized void waitForGradleToComplete() {
