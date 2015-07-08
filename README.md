@@ -19,31 +19,31 @@ The gradle-maven-plugin is now in Maven Central, so there is no need to declare 
 
 To use the plugin, simply declare the plugin and bind it to the maven lifecycle phase of your choice:
 
-```
-<plugin>
-      <groupId>org.fortasoft</groupId>
-      <artifactId>gradle-maven-plugin</artifactId>
-      <version>1.0.5</version>
-        <configuration>
-        	<tasks>
-			<!-- this would effectively call "gradle doSomething" -->
-			<task>doSomething</task>
-		</tasks>
-       </configuration>
-        <executions>
-          <execution>
-	    <!-- You can bind this to any phase you like -->
-            <phase>compile</phase>
-            <goals>
-	       <!-- goal must be "invoke" -->
-               <goal>invoke</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+```xml
+	<plugin>
+		<groupId>org.fortasoft</groupId>
+		<artifactId>gradle-maven-plugin</artifactId>
+		<version>1.0.5</version>
+		<configuration>
+			<tasks>
+				<!-- this would effectively call "gradle doSomething" -->
+				<task>doSomething</task>
+			</tasks>
+		</configuration>
+		<executions>
+			<execution>
+				<!-- You can bind this to any phase you like -->
+				<phase>compile</phase>
+				<goals>
+					<!-- goal must be "invoke" -->
+					<goal>invoke</goal>
+				</goals>
+			</execution>
+		</executions>
+	</plugin>
 ```
 
-Now when you run maven, gradle will be invoked and execute the "doSomething" task defined in build.gradle.
+Now when you run maven, gradle will be invoked and execute the "doSomething" task defined in `build.gradle`.
 
 Obviously you can change the task(s) to suit your needs.
 
