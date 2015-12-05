@@ -1,6 +1,6 @@
 # gradle-maven-plugin
 
-[![Circle CI](https://circleci.com/gh/if6was9/gradle-maven-plugin.svg?style=svg)](https://circleci.com/gh/if6was9/gradle-maven-plugin)
+[![Circle CI](https://circleci.com/gh/LendingClub/gradle-maven-plugin.svg?style=svg)](https://circleci.com/gh/LendingClub/gradle-maven-plugin)
 
 
 This is a maven plugin that makes it easy to invoke Gradle tasks from within Maven.  
