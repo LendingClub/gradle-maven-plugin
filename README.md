@@ -23,7 +23,7 @@ To use the plugin, simply declare the plugin and bind it to the maven lifecycle 
 	<plugin>
 		<groupId>org.fortasoft</groupId>
 		<artifactId>gradle-maven-plugin</artifactId>
-		<version>1.0.5</version>
+		<version>1.0.7</version>
 		<configuration>
 			<tasks>
 				<!-- this would effectively call "gradle doSomething" -->
