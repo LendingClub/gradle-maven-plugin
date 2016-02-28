@@ -38,6 +38,8 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -50,6 +52,18 @@ import org.apache.maven.execution.MavenSession;
  */
 @Mojo(name="invoke")
 public class GradleMojo extends AbstractMojo {
+
+	/**
+		Any maven property with this prefix automatically gets added as a 
+		gradle property
+	*/
+	public static final String PROP_PREFIX = "gradle.prop.";
+
+	/**
+		Any maven property with this prefix automatically gets added as a 
+		system property
+	*/
+	public static final String SYS_PREFIX = "gradle.sys.";
 
 	@Parameter(defaultValue="2.4", required=true)
 	private String gradleVersion;
@@ -288,6 +302,22 @@ public class GradleMojo extends AbstractMojo {
 		// in gradle as well.
 		if (offline && !GradleArgs.OFFLINE.exists(argList)) {
 			argList.add(GradleArgs.OFFLINE.getLongValue());
+		}
+
+		// convert any maven properties prefaced with "gradle.prop" to
+		// an argument.
+		for (Map.Entry<?, ?> entry: System.getProperties().entrySet()) {
+		    String key = (String) entry.getKey();
+
+		    if (key.startsWith(PROP_PREFIX)) {
+				String arg = "-P" + key.substring(PROP_PREFIX.length()) + "=" + entry.getValue().toString();
+				getLog().info("additional argument: " + arg);
+		    	argList.add(arg);
+		    } else if (key.startsWith(SYS_PREFIX)) {
+				String arg = "-D" + key.substring(SYS_PREFIX.length()) + "=" + entry.getValue().toString();
+				getLog().info("additional argument: " + arg);
+		    	argList.add(arg);
+		    }
 		}
 
 		// convert back to array
