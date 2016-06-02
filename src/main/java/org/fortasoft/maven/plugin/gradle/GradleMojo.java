@@ -45,6 +45,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.Mojo;
 
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.project.MavenProject;
 
 /**
  * Goal which invokes gradle!
@@ -112,6 +113,9 @@ public class GradleMojo extends AbstractMojo {
 	@Parameter( defaultValue = "${session}", readonly = true )
     private MavenSession session;
 	
+	@Parameter( defaultValue = "${project}", readonly = true )
+    private MavenProject project;
+
 	File getGradleProjectDirectory() {
 		return gradleProjectDirectory;
 	}
@@ -181,6 +185,11 @@ public class GradleMojo extends AbstractMojo {
 			Binding b = new Binding();
 
 			b.setVariable("mavenBaseDir", mavenBaseDir);
+
+			// add common maven model objects to binding
+			b.setVariable("session", session);
+			b.setVariable("project", project);
+
 			GroovyShell gs = new GroovyShell(b);
 
 			Object rval = gs.evaluate(checkInvokeScript);
