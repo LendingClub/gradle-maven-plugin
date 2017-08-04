@@ -101,6 +101,10 @@ public class GradleMojo extends AbstractMojo {
 	@Parameter
 	private String gradleDistribution;
 
+	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useDistribution(java.net.URI)
+	@Parameter
+	private String gradleDistributionFile;
+
 	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useGradleUserHomeDir(java.io.File)
 	@Parameter
 	private File gradleUserHomeDir;
@@ -230,6 +234,9 @@ public class GradleMojo extends AbstractMojo {
 			if (gradleDistribution != null) {
 				getLog().info("gradleDistributionUri: " + gradleDistribution);
 				c = c.useDistribution(new URI(gradleDistribution));
+			} else if (gradleDistributionFile != null) {
+				getLog().info("gradleDistributionFile: " + gradleDistributionFile);
+				c = c.useDistribution(new File(gradleDistributionFile).toURI());
 			}
 
 			connection = c.connect();
