@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.fortasoft</groupId>
+    <groupId>no.blogspot.mydailyjava.gradlemavenplugin</groupId>
     <artifactId>gradle-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.0.8</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>gradle-maven-plugin Maven Mojo</name>
     <url>https://github.com/LendingClub/gradle-maven-plugin</url>
     <parent>
@@ -20,15 +20,20 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:git:git@github.com:LendingClub/gradle-maven-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:LendingClub/gradle-maven-plugin.git</developerConnection>
-        <url>git@github.com:LendingClub/gradle-maven-plugin.git</url>
+        <connection>scm:git:git@github.com:raphw/gradle-maven-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:raphw/gradle-maven-plugin.git</developerConnection>
+        <url>git@github.com:raphw/gradle-maven-plugin.git</url>
     </scm>
     <developers>
         <developer>
             <id>rob</id>
             <name>Rob Schoening</name>
             <email>robschoening@gmail.com</email>
+        </developer>
+        <developer>
+            <id>raphw</id>
+            <name>Rafael Winterhalter</name>
+            <email>rafael.wth@gmail.com</email>
         </developer>
     </developers>
     <build>
@@ -145,12 +150,12 @@
         <dependency>
             <groupId>org.gradle</groupId>
             <artifactId>gradle-tooling-api</artifactId>
-            <version>2.13</version>
+            <version>4.5</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
