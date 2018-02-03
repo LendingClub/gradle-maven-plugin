@@ -164,16 +164,11 @@
             <version>2.0.6</version>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>gradle</id>
-            <url>http://repo.gradle.org/gradle/libs-releases-local/</url>
-        </repository>
-    </repositories>
+
     <distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/robschoening/gradle-maven-plugin/gradle-maven-plugin</url>
+            <url>https://api.bintray.com/maven/raphw/maven/gradle-maven-plugi</url>
         </repository>
     </distributionManagement>
 </project>
