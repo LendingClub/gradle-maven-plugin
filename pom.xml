@@ -175,7 +175,7 @@
     <distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/raphw/maven/gradle-maven-plugi</url>
+            <url>https://api.bintray.com/maven/raphw/maven/gradle-maven-plugin</url>
         </repository>
     </distributionManagement>
 </project>
