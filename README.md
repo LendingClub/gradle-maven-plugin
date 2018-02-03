@@ -1,10 +1,8 @@
+This is fork of **LendingClub/gradle-maven-plugin** with basic maintenance.
+
 # gradle-maven-plugin
 
-[![Circle CI](https://circleci.com/gh/LendingClub/gradle-maven-plugin.svg?style=svg)](https://circleci.com/gh/LendingClub/gradle-maven-plugin)
-
-
 This is a maven plugin that makes it easy to invoke Gradle tasks from within Maven.  
-
 
 # Objective
 

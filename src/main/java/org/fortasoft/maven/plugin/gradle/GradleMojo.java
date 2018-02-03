@@ -101,6 +101,10 @@ public class GradleMojo extends AbstractMojo {
 	@Parameter
 	private String gradleDistribution;
 
+	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useDistribution(java.net.URI)
+	@Parameter
+	private String gradleDistributionFile;
+
 	// http://www.gradle.org/docs/current/javadoc/org/gradle/tooling/GradleConnector.html#useGradleUserHomeDir(java.io.File)
 	@Parameter
 	private File gradleUserHomeDir;
@@ -186,8 +190,7 @@ public class GradleMojo extends AbstractMojo {
 			Object rval = gs.evaluate(checkInvokeScript);
 
 			if (rval != null && rval instanceof Boolean) {
-				Boolean boolRval = (Boolean) rval;
-				shouldExecute = boolRval.booleanValue();
+				shouldExecute = (Boolean) rval;
 			} else {
 				throw new MojoFailureException(
 						"checkScript must return boolean");
@@ -208,7 +211,7 @@ public class GradleMojo extends AbstractMojo {
 			}
 
 			GradleConnector c = GradleConnector.newConnector();
-			getLog().info("jvmArgs: " + args);
+			getLog().info("jvmArgs: " + Arrays.toString(args));
 			getLog().info(
 					"gradleProjectDirectory: "
 							+ getGradleProjectDirectory().getAbsolutePath());
@@ -231,6 +234,9 @@ public class GradleMojo extends AbstractMojo {
 			if (gradleDistribution != null) {
 				getLog().info("gradleDistributionUri: " + gradleDistribution);
 				c = c.useDistribution(new URI(gradleDistribution));
+			} else if (gradleDistributionFile != null) {
+				getLog().info("gradleDistributionFile: " + gradleDistributionFile);
+				c = c.useDistribution(new File(gradleDistributionFile).toURI());
 			}
 
 			connection = c.connect();
@@ -250,7 +256,7 @@ public class GradleMojo extends AbstractMojo {
 
 			String[] finalArgs = buildFinalArgs(args);
 
-			if (finalArgs != null && finalArgs.length > 0) {
+			if (finalArgs.length > 0) {
 				launcher.withArguments(finalArgs);
 			}
 			if (javaHome != null) {
@@ -291,9 +297,7 @@ public class GradleMojo extends AbstractMojo {
 		List<String> argList = new ArrayList<String>();
 
 		if (args != null) {
-			for (int i=0; i < args.length; i++) {
-				argList.add(args[i]);
-			}
+			argList.addAll(Arrays.asList(args));
 		}
 
 		boolean offline = session.getSettings().isOffline();

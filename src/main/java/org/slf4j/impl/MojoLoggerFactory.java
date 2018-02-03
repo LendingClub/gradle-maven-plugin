@@ -31,8 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.ILoggerFactory;
 
 /**
- * An implementation of {@link ILoggerFactory} which always returns
- * {@link MojoLogger} instances.
+ * An implementation of {@link ILoggerFactory} which always returns a MojoLogger instances.
  * 
  * @author Ceki G&uuml;lc&uuml;
  */
@@ -48,7 +47,7 @@ public class MojoLoggerFactory implements ILoggerFactory {
   }
 
   /**
-   * Return an appropriate {@link MojoLogger} instance by name.
+   * Return an appropriate logger instance by name.
    */
   public Logger getLogger(String name) {
     return new NewMojoLogger();
