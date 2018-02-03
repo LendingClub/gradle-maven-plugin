@@ -48,7 +48,7 @@ public class MojoLoggerFactory implements ILoggerFactory {
   }
 
   /**
-   * Return an appropriate {@link MojoLogger} instance by name.
+   * Return an appropriate logger instance by name.
    */
   public Logger getLogger(String name) {
     return new NewMojoLogger();
