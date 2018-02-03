@@ -165,13 +165,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>gradle</id>
-            <url>http://repo.gradle.org/gradle/libs-releases-local/</url>
-        </repository>
-    </repositories>
-
     <distributionManagement>
         <repository>
             <id>bintray</id>
