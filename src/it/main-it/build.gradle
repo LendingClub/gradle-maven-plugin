@@ -2,13 +2,17 @@ apply plugin: 'maven'
 apply plugin: 'java'
 
 
-clean.doLast {
-	File f = new File("build/classes/main/test/TestBean.class");
-	if (f.exists()) {
-		throw new GradleException("compiled TestBean should be gone");
+clean{
+	doLast {
+		File f = new File("build/classes/main/test/TestBean.class");
+		if (f.exists()) {
+			throw new GradleException("compiled TestBean should be gone");
+		}
 	}
 }
-task writeFile << {
-	File f = new File(rootDir,"build/output.txt");
-	f.setText("hello");
+task writeFile {
+	doLast {
+		File f = new File(rootDir, "build/output.txt");
+		f.setText("hello");
+	}
 }
