@@ -65,7 +65,7 @@ public class GradleMojo extends AbstractMojo {
 	*/
 	public static final String SYS_PREFIX = "gradle.sys.";
 
-	@Parameter(defaultValue="2.13", required=true)
+	@Parameter(defaultValue="6.3", required=true)
 	private String gradleVersion;
 
 

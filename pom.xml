@@ -4,7 +4,7 @@
     <groupId>org.thingsboard</groupId>
     <artifactId>gradle-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <version>1.0.9</version>
+    <version>1.0.10</version>
     <name>gradle-maven-plugin Maven Mojo</name>
     <url>https://github.com/LendingClub/gradle-maven-plugin</url>
     <parent>
@@ -41,7 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.6.0</version>
                 <configuration>
                     <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
                 </configuration>
@@ -134,12 +134,12 @@
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
-            <version>3.3.9</version>
+            <version>3.6.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-core</artifactId>
-            <version>3.3.9</version>
+            <version>3.6.3</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -150,7 +150,7 @@
         <dependency>
             <groupId>org.gradle</groupId>
             <artifactId>gradle-tooling-api</artifactId>
-            <version>2.13</version>
+            <version>6.3</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
