@@ -1,57 +1,57 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.fortasoft.test</groupId>
-  <artifactId>gradle-maven-plugin-test</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0.8</version>
-  <name>gradle-maven-plugin Maven Mojo</name>
-  <url>http://maven.apache.org</url>
-<build>
-<plugins>
-	<plugin>
-		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.0</version>
-		<configuration>
-			<source>1.6</source>
-			<target>1.6</target>
-		</configuration>
-	</plugin>
-	<plugin>
-	       <groupId>org.fortasoft</groupId>
-	      <artifactId>gradle-maven-plugin</artifactId>
-	      <version>1.0.8</version>
-	        <configuration>
-	        	<tasks>
-					<task>clean</task>
-						<task>compileJava</task>
-						<task>writeFile</task>
-				</tasks>
-				<!--
-				<gradleProjectDirectory>${project.basedir}</gradleProjectDirectory>
-				<args>
-					<arg>-q</arg>
-				</args>
-				<jvmArgs>
-					<jvmArg>-XX:MaxPermSize=128m</jvmArg>
-				</jvmArgs>
-			    <javaHome>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home</javaHome>
-				-->
-	       </configuration>
-	        <executions>
-	          <execution>
-	            <phase>compile</phase>
-	            <goals>
-	              <goal>invoke</goal>
-	            </goals>
-	          </execution>
-	        </executions>
-	      </plugin>
-</plugins>
-</build>
-  <dependencies>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>codes.rafael.gradlemavenplugin</groupId>
+    <artifactId>gradle-maven-plugin-test</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.12-SNAPSHOT</version>
+    <name>gradle-maven-plugin Maven Mojo</name>
+    <url>http://maven.apache.org</url>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>codes.rafael.gradlemavenplugin</groupId>
+                <artifactId>gradle-maven-plugin</artifactId>
+                <version>1.0.12-SNAPSHOT</version>
+                <configuration>
+                    <tasks>
+                        <task>clean</task>
+                        <task>compileJava</task>
+                        <task>writeFile</task>
+                    </tasks>
+                    <!--
+                    <gradleProjectDirectory>${project.basedir}</gradleProjectDirectory>
+                    <args>
+                        <arg>-q</arg>
+                    </args>
+                    <jvmArgs>
+                        <jvmArg>-XX:MaxPermSize=128m</jvmArg>
+                    </jvmArgs>
+                    <javaHome>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home</javaHome>
+                    -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>invoke</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
 
-   
-  </dependencies>
+
+    </dependencies>
 
 </project>

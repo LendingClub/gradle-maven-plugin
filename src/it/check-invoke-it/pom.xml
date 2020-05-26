@@ -11,16 +11,16 @@
 <plugins>
 	<plugin>
 		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.0</version>
+		<version>3.8.0</version>
 		<configuration>
-			<source>1.6</source>
-			<target>1.6</target>
+			<source>1.8</source>
+			<target>1.8</target>
 		</configuration>
 	</plugin>
 	<plugin>
-	       <groupId>org.fortasoft</groupId>
-	      <artifactId>gradle-maven-plugin</artifactId>
-	      <version>1.0.8</version>
+		<groupId>codes.rafael.gradlemavenplugin</groupId>
+		<artifactId>gradle-maven-plugin</artifactId>
+		<version>1.0.12-SNAPSHOT</version>
 	        <configuration>
 	        	<tasks>
 					<task>doIt</task>
