@@ -6,3 +6,5 @@ target
 build/
 output.txt
 .metadata
+.idea
+*.iml

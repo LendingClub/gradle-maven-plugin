@@ -1,3 +1,5 @@
+This is fork of **LendingClub/gradle-maven-plugin** with basic maintenance.
+
 # gradle-maven-plugin
 
 [![Circle CI](https://circleci.com/gh/LendingClub/gradle-maven-plugin.svg?style=svg)](https://circleci.com/gh/LendingClub/gradle-maven-plugin)
@@ -21,9 +23,9 @@ To use the plugin, simply declare the plugin and bind it to the maven lifecycle 
 
 ```xml
 	<plugin>
-		<groupId>org.fortasoft</groupId>
+		<groupId>org.thingsboard</groupId>
 		<artifactId>gradle-maven-plugin</artifactId>
-		<version>1.0.8</version>
+		<version>1.0.9</version>
 		<configuration>
 			<tasks>
 				<!-- this would effectively call "gradle doSomething" -->
