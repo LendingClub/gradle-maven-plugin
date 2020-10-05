@@ -8,7 +8,9 @@ clean.doLast {
 		throw new GradleException("compiled TestBean should be gone");
 	}
 }
-task writeFile << {
-	File f = new File(rootDir,"build/output.txt");
-	f.setText("hello");
+task writeFile {
+	doLast {
+		File f = new File(rootDir, "build/output.txt");
+		f.setText("hello");
+	}
 }
